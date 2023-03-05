@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="112.68204mm"
+   height="99.515839mm"
+   viewBox="0 0 112.68204 99.515839"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14, custom)"
+   sodipodi:docname="randomwalk_schematric.svg"
+   inkscape:export-filename="randomwalk_schematric.png"
+   inkscape:export-xdpi="200"
+   inkscape:export-ydpi="200"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.5986532"
+     inkscape:cx="-30.067491"
+     inkscape:cy="60.134983"
+     inkscape:window-width="1451"
+     inkscape:window-height="900"
+     inkscape:window-x="67"
+     inkscape:window-y="21"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="TriangleStart"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="TriangleStart"
+       markerWidth="5.3244081"
+       markerHeight="6.155385"
+       viewBox="0 0 5.3244081 6.1553851"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-33.628194,-95.229348)">
+    <rect
+       style="opacity:0.320741;fill:none;fill-opacity:0.937255;stroke:#1a1a1a;stroke-width:3.08296;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.937255"
+       id="rect284"
+       width="109.59908"
+       height="96.432877"
+       x="35.169674"
+       y="96.770828"
+       ry="10.055943" />
+    <ellipse
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="path996"
+       cx="60.461449"
+       cy="113.71903"
+       rx="5.7558479"
+       ry="5.6719174" />
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="path996-3"
+       cx="50.058918"
+       cy="141.81328"
+       rx="5.7558479"
+       ry="5.6719174" />
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="path996-6"
+       cx="112.70089"
+       cy="174.5759"
+       rx="5.7558479"
+       ry="5.6719174" />
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="path996-7"
+       cx="133.92117"
+       cy="107.39732"
+       rx="5.7558479"
+       ry="5.6719174" />
+    <rect
+       style="opacity:1;fill:#999999;fill-opacity:1;stroke:#999999;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1256"
+       width="38.586945"
+       height="30.905188"
+       x="82.90789"
+       y="120.39812"
+       ry="0.090930805" />
+    <ellipse
+       style="fill:#5f5fd3;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="path996-6-3"
+       cx="91.537048"
+       cy="143.54773"
+       rx="5.7558479"
+       ry="5.6719174" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="path996-6-5"
+       cx="105.1875"
+       cy="132.14732"
+       rx="5.7558479"
+       ry="5.6719174" />
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="path996-6-56"
+       cx="60.455467"
+       cy="179.91618"
+       rx="5.7558479"
+       ry="5.6719174" />
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="path996-6-2"
+       cx="70.350739"
+       cy="159.00081"
+       rx="5.7558479"
+       ry="5.6719174" />
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.00628;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#TriangleStart);marker-end:url(#TriangleStart)"
+       d="m 85.981472,115.7398 32.440448,-0.14271"
+       id="path1546" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.7611px;font-family:Montserrat;-inkscape-font-specification:Montserrat;text-align:end;text-anchor:end;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="104.85804"
+       y="111.44975"
+       id="text1981"><tspan
+         sodipodi:role="line"
+         id="tspan1979"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Montserrat;-inkscape-font-specification:'Montserrat Light';stroke-width:0.3;stroke-dasharray:none"
+         x="104.85804"
+         y="111.44975">Δ</tspan></text>
+  </g>
+</svg>

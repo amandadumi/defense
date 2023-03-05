@@ -1,0 +1,51 @@
+/*
+* reveal.js 4.3.0
+* https://revealjs.com
+* MIT licensed
+*
+* Copyright (C) 2011-2022 Hakim El Hattab, https://hakim.se
+*/
+
+.m1830-answer{
+    color: #b30000;
+    /*font-style: normal;
+    line-height: 2em;
+    margin: .5em;*/
+}
+
+.redmath {
+    color: red;
+    /*font-style: normal;
+    line-height: 2em;
+    margin: .5em;*/
+}
+
+.bluemath {
+    color: blue;
+    /*font-style: normal;
+    line-height: 2em;
+    margin: .5em;*/
+}
+
+.reveal .slide aside .aside-footnotes{
+    font-size: .7em;
+    margin-top: 2em;
+
+}
+
+figcaption {
+    font-family: Montserrat;
+    font-size: .4em;
+    text-align: match-parent;
+  }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+input[type=checkbox] {
+    transform: scale(2);
+}

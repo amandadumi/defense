@@ -1,0 +1,968 @@
+---
+# title: "Partitioning the problem: electronic structure approaches when DFT is not enough"
+author: "Amanda Dumi"
+format: 
+   revealjs:
+        theme: [default, css/ah.scss]
+        css: css/my_css.css
+        transition: slide
+        navigation-mode: vertical
+        controls-layout: bottom-right
+        preview-links: true
+        margin: 0.1
+        slide-number: true
+        pdf-separate-fragments: true 
+        reference-location: block
+        # footer: Amanda Dumi
+bibliography: content/references.bib 
+csl: modern-humanities-research-association.csl 
+---
+
+::: {.hidden}
+\newcommand{\bra}[1]{\left<#1\right|}\newcommand{\ket}[1]{\left|#1\right>}\newcommand{\bk}[2]{\left<#1\middle|#2\right>}\newcommand{\bke}[3]{\left<#1\middle|#2\middle|#3\right>}
+:::
+
+::: {style="font-family: Montserrat;  text-align: center;font-size: .9em"}
+<p style="font-size:1.5em">  Quantum Monte Carlo and Molecular Fragmentation Methods for the Treatment of Electron Correlation in Molecules and Solids
+</p>
+
+:::
+
+<br>
+<br>
+<br>
+<br>
+
+::: {style="font-family: Montserrat;  text-align: center;font-size: .7em"}
+
+Amanda Dumi
+<br>
+Dissertation Defense
+<br>
+<div id="current_date"></p>
+<script>
+date = new Date();
+year = date.getFullYear();
+month = date.getMonth() + 1;
+day = date.getDate();
+document.getElementById("current_date").innerHTML = month + "/" + day + "/" + year;
+</script>
+</div> 
+
+:::
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:1.0em"}
+Electronic Structure Problem:
+<hr/>
+:::
+
+::: {style="font-family: Montserrat;font-size:.8em;text-align:left"}
+describe the motions of electrons in atoms or molecule
+$$\hat{H}\ket{\Psi}\ =\ E\ket{\Psi}$$
+:::
+
+::: {.r-stack}
+![](images/Ie_only.png){.fragment fig-align="center" width="40%"}
+
+![](images/Ie_interaction.png){.fragment fig-align="center" width="40%"}
+:::
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:1.0em"}
+Electronic Structure Methods:
+<hr/>
+:::
+
+{{< include content/code/_correlated_methods.qmd >}}
+
+
+---
+
+::: {style="font-family: Montserrat;font-size:1.0em"}
+Motivating systems
+<hr/>
+:::
+
+Can we use or develop methods which allow for a reasonable treatment of the following systems?
+
+![](images/hgraphene_python.png){width=32%}
+![](images/h2o4_labeled.png){width=30%} 
+![](images/trimer_render.png){width=34%}
+
+----
+
+::: {style="font-family: Montserrat;font-size:1.0em; padding-bottom:.3em"}
+Reliable approximations for electronic structure<hr/>
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+
+::: {data-id="box2" style="background:  #caeac7; width: 98%; height: 250px; border-radius: 200px;text-align:center;color: #000000;font-size:.8em;padding-top:1.5em"}
+<a href="#integrals">**Stochastic sampling**</a>
+
+Quantum Monte Carlo:<br>
+applications and developments
+:::
+
+::: {data-id="box2" style="background:  #caeac7; width: 98%; height: 250px; border-radius: 200px;text-align:center;color: #000000;font-size:.8em;padding-top:1.5em;margin-top:5%"}
+<a href="#hilbert_space">**Hilbert space sampling**</a>
+
+selected CI
+for<br>
+QMC trial wave functions
+:::
+:::
+
+::: {.column width="50%"}
+::: {data-id="box2" style="background:  #caeac7; width: 99%; height: 250px; border-radius: 100px;text-align:center;color: #000000;font-size:.8em;margin-top:25%;padding-top:1.5em"}
+<a href="#real_space">**Real space partitioning**</a>
+
+molecular fragments<br>
+determined with 
+unsupervised machine learning<br>
+:::
+:::
+::::
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:1.0em"}
+Electronic Structure Problem:
+<hr/>
+:::
+
+::: {style="font-family: Montserrat;font-size:.8em;text-align:left"}
+describe the motions of electrons in atoms or molecule
+$$\hat{H}\ket{\Psi}\ =\ E\ket{\Psi}$$
+
+Approximations:
+
+::: {.r-stack}
+::: {.fragment .fade-in-then-out style="margin-left: 0.5%; margin-top:0"}
+
+
+\begin{align}
+\hat{H} &= \sum_{i}\left[ -\frac{1}{2}\nabla_i^2
+-\sum_{iA}\frac{Z_A}{\left|\vec{r}_i-\vec{R}_A|\right|}\right]
++
+\sum_{i<j}\frac{1}{\left|\vec{r}_i - \vec{r}_j\right|} \\
+
+\hat{H} &= \hat{h}(1) + \hat{v}(1,2) 
+\end{align}
+
+Non-relativistic, time-independent
+
+Born-Oppenheimer: nuclei are stationary
+:::
+::: {.fragment .fade-in-then-out style="margin-left: 0.5%; margin-top:0"}
+Single particle orbitals
+<!-- $$\Psi= \chi_{1}\left(\mathbf{x}_{1}\right)\chi_{2}\left(\mathbf{x}_{2}\right)\dots\chi_{N}\left(\mathbf{x}_{N}\right)$$ -->
+$$\Psi=\frac{1}{\sqrt{N !}}\left|\begin{array}{cccc}
+    \chi_{1}\left(\mathbf{x}_{1}\right) & \chi_{2}\left(\mathbf{x}_{1}\right) & \cdots & \chi_{N}\left(\mathbf{x}_{1}\right) \\
+    \chi_{1}\left(\mathbf{x}_{2}\right) & \varphi_{2}\left(\mathbf{x}_{2}\right) & \cdots & \chi_{N}\left(\mathbf{x}_{2}\right) \\
+    \vdots & \vdots & \ddots & \vdots \\
+    \chi_{1}\left(\mathbf{x}_{N}\right) & \chi_{2}\left(\mathbf{x}_{N}\right) & \cdots & \chi_{N}\left(\mathbf{x}_{N}\right)
+    \end{array}\right| $$
+:::
+::: {.fragment .fade-in style="margin-left: 0.5%; margin-top:0"}
+integrals
+$$\hat{H} = \hat{h}(1) + \hat{v}(1,2)$$
+
+\begin{align}
+\langle i \rvert \hat{h}(1) \lvert j \rangle\ &=\ \int dx_1 \chi_i(x_1)\hat{h}(1) \chi_j (x_1)\\
+\langle ij \rvert \hat{v}(1,2) \lvert kl \rangle\ &=\ \int dx_1dx_2 \chi_i^*(x_1)\chi_j^*(x_2)\hat{v}(1,2) \chi_k (x_1)\chi_l(x_2)
+\end{align}
+:::
+:::
+
+:::
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:1.0em"}
+Electronic Structure Methods:
+<hr/>
+:::
+
+{{< include content/code/_correlated_methods.qmd >}}
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:1.0em"}
+Hartree-Fock: a mean field approach (WIP)
+<hr/>
+:::
+</br>
+
+::: {style="font-family: Montserrat;font-size:.8em;padding-top:0"}
+Electrons feel the repulsive force of an average electron cloud. 
+     
+$\hookrightarrow$ motion of individual electrons are not correlated
+
+::: {.r-stack}
+
+::: {.fragment .fade-out fragment-index=4}
+::: {.r-stack}
+![](images/Ie_interaction.png){.fragment fragment-index=1 fig-align="center" width="40%"}
+
+![](images/Ie_hf.png){.fragment fragment-index=2 fig-align="center" width="40%"}
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=4}
+$$ E_{HF} = \sum_i^{elec}\langle i \rvert h(1) \lvert i \rangle + \sum_{i>j}^{elec}\lbrack ii \rvert jj\rbrack - \lbrack ii \rvert jj\rbrack$$
+
+Coulomb $\lbrack ii \rvert jj\rbrack =\ \int dx_1dx_2 \chi_i^*(x_1)\chi_j^*(x_2)\hat{v}(1,2) \chi_i (x_1)\chi_j(x_2)$
+
+Exchange $\lbrack ij \rvert ji\rbrack  =\ \int dx_1dx_2 \chi_i^*(x_1)\chi_j^*(x_2)\hat{v}(1,2) \chi_j (x_1)\chi_i(x_2)$
+:::
+:::
+
+:::
+
+
+---
+
+
+Variational Energy
+
+$$
+E_v\ = \frac{\int dR\Psi^*(R) \hat{H} \Psi(R)}{\int dR\Psi^*(R)\ \Psi(R)}\ \geq\ E_0
+$$
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:1.0em"}
+Correlation Energy
+<hr/>
+:::
+
+
+::: {style="font-family: Montserrat;font-size:.8em"}
+$$E_{corr}\ =\ E_{exact}- E_{HF}$$
+
+:::: {.columns}
+::: {.column width="20%"}
+
+<img src="images/water_ex.png" style="align:center;width:95%"/> </img>
+
+:::
+::: {.column width="80%"}
+::: {style="font-size:1.2em"}
+
+```{python}
+#| echo: false
+
+import numpy as np
+from pyscf import gto,scf,fci
+all_e_hf = np.array([])
+all_e_fci = np.array([])
+```
+
+```{python }
+#| echo: true
+#| code-line-numbers: "1|5,7|11-12"
+#| code-fold: true
+#| font-size: 30pt
+#| code-summary: Vary 1 O-H bond distance in water
+
+oh_dist = np.arange(0.6, 1.8, 0.2)
+for r in oh_dist:
+     mol_h2o = gto.M(
+     atom = f"""
+     O 0 0 0; H 0 1 0; H 0 0 {r}
+     """,
+     basis = 'sto-3g',
+     verbose=0)
+
+     rhf_h2o = scf.RHF(mol_h2o)
+     e_hf = rhf_h2o.kernel()
+     e_fci = fci.FCI(rhf_h2o).kernel()[0]
+     
+     all_e_hf = np.append(all_e_hf,e_hf)
+     all_e_fci = np.append(all_e_fci,e_fci)
+```
+
+
+::: {.fragment}
+```{python}
+#| echo: false
+import matplotlib.pyplot as plt
+lw = 2
+ms=30
+fs = 24
+al=0.7
+
+fig,ax = plt.subplots(figsize=(10,4))
+
+ax.plot(oh_dist,all_e_hf,label='Hartree-Fock',color='b',alpha=al,linewidth=lw,markersize=ms,marker='.')
+ax.plot(oh_dist,all_e_fci,label='FCI',color='g',alpha=al,linewidth=lw,markersize=ms,marker='.')
+
+ax.set_xlabel('O-H distance ($\AA$)',fontsize=fs)
+ax.set_ylabel('Energy (Ha)',fontsize=fs)
+ax.legend(fontsize=fs)
+ax.tick_params(axis='both', which='major', labelsize=fs-4)
+plt.show()
+```
+:::
+:::
+:::
+::::
+:::
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:1.0em"}
+Correlation Energy
+<hr/>
+:::
+
+::: {style="font-family: Montserrat;font-size:.8em"}
+
+$$E_{corr}\ =\ E_{exact}- E_{HF}$$
+When does $E_{corr}$ matter?
+
+- Van der Waals interactions
+- relative energetics
+- magnetism
+- descriptions of lanthanides
+- ...
+
+
+
+|        Correlation              |                             |
+| -------------------  | ---------------------------|
+| static     | need of more than one Slater determinant |
+| dynamic  | electron repulsion due to proximity  |
+
+
+:::
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:1.0em"}
+Electronic Structure methods
+<hr/>
+:::
+
+::: {.r-stack}
+
+<!-- {{< include content/code/_correlated_methods.qmd >}} -->
+{{< include content/code/_correlated_methods.qmd >}}
+
+::: {.fragment}
+{{< include content/code/_correlated_methods_scaled.qmd >}}
+:::
+
+:::
+
+
+---
+
+
+<!-- ## {background-image="images/dft_into_dens.jpeg" background-opacity=0.3 background-size=90%} -->
+
+::: {style="font-family: Montserrat;font-size:1.0em"}
+Density Functional Theory
+<hr/>
+:::
+
+
+![](images/hks_new.png){width=90% fig-align="center" }
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:1.0em"}
+DFT: exchange-correlation functionals
+<hr/>
+:::
+
+<!-- $$
+E_{KS}[n]\ =\ T_{ip}[n] + \int d\text{r} v_{ext}(r)n(r) + E_H[n] + <span style="color:#56766A">E_{xc}[n]</span>
+$$ -->
+$$E_{xc}[n]\ 
+=\ \underbrace{\Delta T[n]}_{\texttt{kinetic energy}\atop\texttt{correction}}\ +\ \overbrace{\Delta V_{ee}[n]}^{\texttt{nonclassical}\atop\texttt{Vee correction}}$$
+
+$E_{xc}$ form unknown.
+Approximate density functionals used:
+<br/>
+
+::: {.r-hstack}
+
+::: {data-id="box2" style="background: #56766A; width: 150px; height: 150px; border-radius: 200px;text-align:center;color: #FFFFFF"}
+</br>
+LDA
+:::
+
+$\rightarrow$
+
+::: {data-id="box2" style="background:  #56766A; width: 150px; height: 150px; border-radius: 200px;text-align:center;color: #FFFFFF"}
+</br>
+GGAa
+:::
+
+$\rightarrow$
+
+::: {data-id="box2" style="background:  #56766A; width: 150px; height: 150px; border-radius: 200px;text-align:center;color: #FFFFFF"}
+</br>
+mGGA
+:::
+
+$\rightarrow$
+
+::: {data-id="box2" style="background:  #56766A; width: 150px; height: 150px; border-radius: 200px;text-align:center;color: #FFFFFF;vertical-align:middle"}
+</br>
+hybrid
+:::
+
+$\rightarrow$
+
+::: {data-id="box2" style="background:  #FFFFFF; width: 150px; height: 150px; border-radius: 200px;text-align:center;color: #000000;vertical-align:middle"}
+generally
+more accurate
+:::
+:::
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:1.0em"}
+DFT challenges
+<hr/>
+:::
+
+::: {style="font-family: Montserrat;font-size:.8em;padding-top:0"}
+
+- functionals $\neq$ systematically improvable
+- DFT fails in strongly correlated regimes
+- functionals often created to target $E$ and $\rho$ only, meaning other observables may not be reliable
+- wrong functional choice for system physics
+:::
+
+
+--- 
+
+
+::: {style="font-family: Montserrat;font-size:1.0em;text-align:center; padding-bottom:1em"}
+Reduce cost through various system reductions
+<hr/>
+:::
+
+:::: {.columns}
+::: {.column width="45%"}
+::: {style="font-family: Montserrat;font-size:.8em;text-align:center;padding-top:0"}
+::: {.fragment .highlight-blue}
+<a href="#integrals">**Solving integrals<br> through sampling**</a>
+
+Quantum Monte Carlo: applications and developments
+:::
+<br>
+<br>
+<br>
+
+
+<a href="#hilbert_space">**Hilbert space**</a>
+
+selected CI as approximate trial wave functions
+
+:::
+:::
+
+::: {.column width="45%"}
+::: {style="font-family: Montserrat;font-size:.8em;text-align:center;padding-top:3em"}
+
+<a href="#real_space">**Real space**</a>
+
+Determining molecular fragments with unsupervised machine learning (UML)
+
+:::
+:::
+::::
+
+
+---
+
+
+## {.scrollable}
+::: { style="font-family: Montserrat;font-size:.9em"}
+QMC application:<span style="font-size:.9em"> Hydrogen on graphene
+^[@doi:10.1063/5.0085982]</span>
+<hr/>
+:::
+
+::: { style="font-family: Montserrat;font-size:.75em"}
+
+:::: {.columns}
+::: {.column width="45%"}
+
+![](images/hgraphene_python.png){width=80% }
+
+
+
+<!-- <img src="images/hgraphene_python.png" style="text-align:center;width:75%"/> </img> -->
+
+:::
+
+::: {.column width="55%"}
+
+</br>
+
+$E_b=E_{dgr+H}-(E_{gr}+E_{H})$
+</br>
+
+| Method |    $E_b$ (meV)     |
+|--------|--------------------|
+| PW91   | -810 to -830, -870 |
+| PBE    | -790, -840, -980   |
+</br>
+
+::: {.fragment}
+- functional dependent $E_b$
+- a need for benchmark values
+
+     $\hookrightarrow$ can be provided by QMC
+:::
+
+:::
+::::
+
+
+
+::: 
+
+
+---
+
+
+{{< include content/_qmc.qmd >}}
+
+
+---
+
+
+::: { style="font-family: Montserrat;font-size:.9em"}
+QMC application:<span style="font-size:.9em"> Hydrogen on graphene</span>
+<hr/>
+:::
+
+
+:::: {.columns}
+::: {.column width="45%"}
+::: {style="font-family: Montserrat;font-size:.55em;text-align:center"}
+| Method | Binding energy (meV)    |
+|--------|--------------------|
+| PW91   | -810 to -830, -870 |
+| PBE    | -790, -840, -980   |
+|        |                    |
+| PBE<sup>1</sup>    | -820               |
+| PBE<sup>2</sup>   | -871               |
+| PBE0<sup>2</sup>   | -851 (-800)        |
+| HSE<sup>2</sup>  | -794 (-743)        |
+| DMC    | <span style="color: blue">-691 $\pm$ 19 </span>     |
+:::
+::: {style="font-family: Montserrat;font-size:.5em;text-align:left"}
+<sup>1</sup> plane wave basis; <sup>2</sup> GTO basis
+
+::: {.fragment fragment-index=1}
+$$\Delta\rho_{system} =\rho_{system}^{DMC}- \rho_{system}^{DFT}$$
+:::
+
+:::
+:::
+
+::: {.column width="55%"}
+::: {style="font-family: Montserrat;font-size:.7em;text-align:left"}   
+- **PBE result obtained with a plane-wave basis set results in a $E_b$ about 20% larger in magnitude** than the DMC result.
+- $E_b$ variation $\rightarrow$ order of magnitude change in the H evolution current at room temperature on graphene electrodes
+
+::: {.fragment fragment-index=1}
+- There are **significant differences in the DMC and PBE $\rho$** 
+:::
+:::
+:::
+::::
+
+
+::: {.fragment fragment-index=1}
+::: {style="font-family: Montserrat;font-size:.4em;text-align:bottom"}
+
+<!-- $$\Delta\rho_{system} =\rho_{system}^{DMC}- \rho_{system}^{DFT}$$ -->
+<figcaption style="font-family: Montserrat;font-size:1.5em;padding-left:10em;padding-top:0em  "> 
+PBE         <span style="padding-left:15em">HSE</span>         
+</figcaption>
+<img src="images/aed63_qmc_2d_slice_hgraphene_cropped.png" style="width:38%;text-align:left;margin:0em;"/> </img> 
+<img src="images/qmc_2d_slice_hgraphene_hse.png" style="width:48%;text-align:center;margin:0em;"/> </img> 
+:::
+:::
+
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:1.0em; padding-bottom:.3em"}
+Reliable approximations for electronic structure<hr/>
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+
+::: {data-id="box2" style="background:  #caeac7; width: 98%; height: 250px; border-radius: 200px;text-align:center;color: #000000;font-size:.8em;padding-top:1.5em"}
+
+<a href="#integrals">**Stochastic sampling**</a>
+
+Quantum Monte Carlo:<br>
+applications and developments
+:::
+
+::: {data-id="box2" style="background:  #caeac7; width: 98%; height: 250px; border-radius: 200px;text-align:center;color: #000000;font-size:.8em;padding-top:1.5em;margin-top:5%"}
+<a href="#hilbert_space">**Hilbert space sampling**</a>
+
+selected CI
+for<br>
+QMC trial wave functions
+:::
+:::
+
+::: {.column width="50%"}
+::: {data-id="box2" style="background:  #caeac7; width: 99%; height: 250px; border-radius: 100px;text-align:center;color: #000000;font-size:.8em;margin-top:25%;padding-top:1.5em"}
+<a href="#real_space">**Real space partitioning**</a>
+
+molecular fragments<br>
+determined with 
+unsupervised machine learning<br>
+:::
+:::
+::::
+
+---
+
+
+::: {id="hilbert_space" style="font-family: Montserrat;font-size:.9em"}
+QMC application:<span style="font-size:.9em"> non-valence correlation bound anion[@doi:10.1063/5.0030942]</span>
+<hr/>
+:::
+::: {style="font-family: Montserrat;font-size:.7em;padding-top:.2em"}
+- present in graphene sheets and C$_{60}$ clusters
+- rely on an accurate description of $E_{corr}$ to bind   $\rightarrow\ E_{corr} = E_{true}- E_{HF}$
+
+:::
+
+
+:::: {.columns}
+::: {.column width="50%"}
+<figure>
+<img src="images/h2o4_labeled.png" style=";width:70%"/> </img> 
+<figcaption style="font-family: Montserrat;font-size:.4em;padding-left:6em  "> 
+model system: (H$_2$O)$_4$
+
+</figcaption>
+</figure>
+:::
+
+::: {.column width="50%"}
+<figure>
+<img src="images/hf_only_orbitalr2.png" style="padding-bottom:0pt;width:75%;margin:0em"/> </img> 
+<p style="font-family: Montserrat;font-size:.4em;margin:0em"> 
+Radial integration of Hartree-Fock orbital density, $R=4$ Angstroms
+ </p>
+</figure>
+
+:::
+::::
+
+
+---
+
+
+{{< include content/_cipsi.qmd >}}
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:.9em"}
+(H$_2$O)$_4$ Results
+<hr/>
+:::
+
+
+:::: {.columns}
+::: {.column width="40%"}
+<img src="images/aed63_water4toc.png" style="width:100%"/> </img>
+
+:::
+
+::: {.column width="60%"}
+::: {style="font-family: Montserrat;font-size:.55em"}
+| wave function           | EBE (meV)          | 
+|-------------------------|--------------------|
+| HF                      |   -0.4            |
+| EOM-CCSD                 | 180.6            |
+| EOM-CCSD(T)(a)∗          | <span style="color:orange">195.8 </span>              |  
+|                       |    |          |
+|   **DMC**   |          |
+|                       |    |          |
+| SD/HF                   | 183 $\pm$ 10    | 
+| SD/B3LYP                |212 $\pm$ 11  |   
+| SD/HF(N)//SD/NO SDCI(A) | <span style="color:blue">205 $\pm$ 10   </span>   |   
+| MD/CIPSI NO             | <span style="color:blue">190 $\pm$ 9</span>        |                              |
+|   **AFQMC**   |          |
+|                                |
+| SD/HF(N)//SD/NO SDCI(A)| <span style="color:blue">194 $\pm$  10 </span>  |
+
+:::
+:::
+::::
+::: {style="font-family: Montserrat;font-size:.7em"}
+
+- <span style="color:blue">DMC, AFQMC with multideterminant trial</span> agrees with <span style="color:orange">EOM-CCSD(T)(a)* result </span>
+:::
+
+---
+
+::: {style="font-family: Montserrat;font-size:.9em"}
+(H$_2$O)$_4$ Radial Integration<hr/>
+:::
+:::: {.columns}
+::: {.column width="65%"}
+<img src="images/r4_orbitalr2.png" style="width:100%;"/> </img>
+:::
+::: {.column width="35%"}
+::: {style="font-family: Montserrat;font-size:.8em"}
+$R$ = 4 Angstroms
+
+- HF does not bind
+- B3LYP shoulder, likely due to self interaction error
+- rSDCI shape agrees with EOM
+- CIPSI used B3LYP orbitals, shoulder still present, but lessened.
+
+:::
+:::
+::::
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:1.0em; padding-bottom:.3em"}
+Reliable approximations for electronic structure<hr/>
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+
+::: {data-id="box2" style="background:  #caeac7; width: 98%; height: 250px; border-radius: 200px;text-align:center;color: #000000;font-size:.8em;padding-top:1.5em"}
+
+<a href="#integrals">**Stochastic sampling**</a>
+
+Quantum Monte Carlo:<br>
+applications and developments
+:::
+
+::: {data-id="box2" style="background:  #caeac7; width: 98%; height: 250px; border-radius: 200px;text-align:center;color: #000000;font-size:.8em;padding-top:1.5em;margin-top:5%"}
+<a href="#hilbert_space">**Hilbert space sampling**</a>
+
+selected CI
+for<br>
+QMC trial wave functions
+:::
+:::
+
+::: {.column width="50%"}
+::: {data-id="box2" style="background:  #caeac7; width: 99%; height: 250px; border-radius: 100px;text-align:center;color: #000000;font-size:.8em;margin-top:25%;padding-top:1.5em"}
+<a href="#real_space">**Real space partitioning**</a>
+
+molecular fragments<br>
+determined with 
+unsupervised machine learning<br>
+:::
+:::
+::::
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:.9em"}
+Conclusions and future directions:
+<hr/>
+:::
+
+Quantum Monte Carlo: Using stochastic sampling to solve the Schrodinger equation
+
+hgraphene: 
+
+- in cases where DFT provided inconsistent results
+- still questions to explore about functional driven vs density driven
+
+h2o4:
+
+- a model case for NVCBs was treated successfully in QMC
+- Although choice of trial wave function as sensitive: hand picked and CIPSI wave functions performed well as trials. 
+
+
+---
+
+
+{{< include content/_uml.qmd >}}
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:.7em"}
+Acknowledgements
+<hr/>
+:::
+::: {style="font-family: Montserrat;font-size:.6em"}
+
+:::: {.columns}
+::: {.column width="50%"}
+- Dr. Kenneth D. Jordan
+- Dr. Daniel S. Lambrecht
+- Co-authors: Shiv Upadhyay, Dr. James Shee, Dr. Hyeondeok Shin, Dr. Leonardo Bernasconi, Dr. Anouar Benali
+- Dr. Luke Shulenburger, Dr. Raymond Clay
+
+:::
+::: {.column width="5%"}
+:::
+::: {.column width="45%"}
+
+Computational Resources
+
+- Center for Research computing, University of Pittsburgh
+- Argonne Leadership Computing Facility
+- Sandia National Laboratories
+:::
+::::
+Funding:
+
+- ACS: DNI-63213
+- NSF: 1807638
+
+
+<img src="images/SNL_Stacked_Black_Blue.png" style="float:left;height:3em;padding:.3em"/> </img>
+<img src="images/University_of_Pittsburgh_seal.png"              style="float:left;height:3em;padding:.3em"/> </img>
+<img src="images/New_DOE_Logo_Color.png"     style="float:left;height:3em;padding:.3em"/> </img>
+<img src="images/Argonne_cmyk_black-0.png"   style="float:left;height:3em;padding:.3em"/> </img>
+<img src="images/acs_logo.png"               style="float:left;height:3em;padding:.3em"/> </img>
+
+
+:::
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:.7em"}
+Acknowledgements
+<hr/>
+:::
+
+- my family
+- friends 
+- dr. madura
+![](images/jeff1_1.png)
+![](images/jeff1_1.png)
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:1.0em; padding-bottom:.3em"}
+Reliable approximations for electronic structure<hr/>
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+
+::: {data-id="box2" style="background:  #caeac7; width: 98%; height: 250px; border-radius: 200px;text-align:center;color: #000000;font-size:.8em;padding-top:.5em"}
+
+<a href="#integrals">**Stochastic sampling**</a>
+
+::: {.style="font-size:.6em"}
+Quantum Monte Carlo:<br>
+applications and developments<br>
+:::
+$\hookrightarrow$ QMC can act as reference in system where DFT varies 
+
+:::
+
+::: {data-id="box2" style="background:  #caeac7; width: 98%; height: 250px; border-radius: 200px;text-align:center;color: #000000;font-size:.8em;padding-top:.5em;margin-top:5%"}
+<a href="#hilbert_space">**Hilbert space sampling**</a>
+
+selected CI
+for<br>
+QMC trial wave functions<br>
+$\hookrightarrow$  sampling the Hilbert space can provide trial wave functions 
+:::
+:::
+
+::: {.column width="50%"}
+::: {data-id="box2" style="background:  #caeac7; width: 99%; height: 250px; border-radius: 100px;text-align:center;color: #000000;font-size:.8em;margin-top:25%;padding-top:.5em"}
+<a href="#real_space">**Real space partitioning**</a>
+
+molecular fragments<br>
+determined with 
+unsupervised machine learning<br>
+$\hookrightarrow$ spectral clustering is a robust approach which can work with structure any descriptor
+
+:::
+:::
+::::
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:.9em"}
+Conclusions
+:::
+
+::: {style="font-family: Montserrat;font-size:.7em"}
+When electron correlation plays a major role, mean field methods may be problematic and alternatives are needed
+<br><br>
+<br>
+Presented on three approaches:
+
+
+- QMC: application to (H$_2$O)$_4$ and H on graphene
+<br>
+$\hookrightarrow$ systems where DFT varies, QMC can act as reference
+<br>
+$\hookrightarrow$  sampling the hilbert space can provide trial wave functions 
+<br>
+$\hookrightarrow$  motivation for follow up studies
+- UML Molecular Fragmentation: An approach to automatically partition molecular systems
+<br>
+$\hookrightarrow$  spectral clustering is a robust approach which can work with structure only descriptors.
+
+:::
+
+---
+
+
+References 
+
+

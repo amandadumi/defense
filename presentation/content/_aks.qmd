@@ -1,0 +1,94 @@
+
+::: {style="font-family: Montserrat;font-size:.7em"}
+Acknowledgements
+<hr/>
+:::
+::: {style="font-family: Montserrat;font-size:.6em"}
+
+:::: {.columns}
+::: {.column width="50%"}
+- Dr. Kenneth D. Jordan
+- Dr. Daniel S. Lambrecht
+- Co-authors: Shiv Upadhyay, Dr. James Shee, Dr. Hyeondeok Shin, Dr. Leonardo Bernasconi, Dr. Anouar Benali
+- Dr. Luke Shulenburger, Dr. Raymond Clay
+
+:::
+::: {.column width="5%"}
+:::
+::: {.column width="45%"}
+
+Computational Resources
+
+- Center for Research computing, University of Pittsburgh
+- Argonne Leadership Computing Facility
+- Sandia National Laboratories
+:::
+::::
+Funding:
+
+- ACS: DNI-63213
+- NSF: 1807638
+
+
+<img src="images/SNL_Stacked_Black_Blue.png" style="float:left;height:3em;padding:.3em"/> </img>
+<img src="images/University_of_Pittsburgh_seal.png"              style="float:left;height:3em;padding:.3em"/> </img>
+<img src="images/New_DOE_Logo_Color.png"     style="float:left;height:3em;padding:.3em"/> </img>
+<img src="images/Argonne_cmyk_black-0.png"   style="float:left;height:3em;padding:.3em"/> </img>
+<img src="images/acs_logo.png"               style="float:left;height:3em;padding:.3em"/> </img>
+
+
+:::
+
+---
+
+## {.scrollable}
+::: {style="font-family: Montserrat;font-size:.7em"}
+Acknowledgements
+<hr/>
+:::
+
+::: {style="font-family: Montserrat;font-size:.6em;text-align:center"}
+
+:::: {.columns}
+::: {.column width=30%}
+
+![family](images/family.jpg){width=300px}<br>
+![](images/mavisdanaskids.JPG){width=300px}
+
+
+:::
+::: {.column width=30%}
+ ![](images/sarah%20at%20dance.JPG){width=300px}<br>
+![](images/pqi.JPG){width=300px}<br>
+
+:::
+::: {.column width=30%}
+![chipotle lovers](images/biketrip.jpg){width=300px}
+![](images/charlie.jpg){width=300px}
+
+::: 
+
+::::
+
+::: {.notes}
+- my family who encouraged and supported me in a path they hadn't experienced and trusted my choices.
+Mavis: she comforted me when i cried playing goalie as an 8 year old and 
+
+- dr. madura
+
+:::
+:::
+---
+
+Acknowledgments
+
+:::: {.columns}
+::: {.column width=50%}
+![](images/jeff1_1.png){width=80%}
+:::
+::: {.column width=50%}
+![](images/citizen_all.jpg){width=80%}
+![](images/books.JPG){width=80%}
+:::
+::::
+

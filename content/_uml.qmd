@@ -1,0 +1,147 @@
+::: {id="real_space" style="font-family: Montserrat;font-size:1.0em"}
+Fragmenting with unsupervised machine learning
+:::
+
+::: {style="font-family: Montserrat;font-size:.7em"}
+Problem
+:::
+
+![](images/fragment_demo.png){width=100% }
+
+
+--- 
+
+
+::: {id="real_space" style="font-family: Montserrat;font-size:1.0em"}
+(WIP) Other fragment determination methods
+:::
+
+- SMFA
+- Density convergence
+- AIM
+
+
+...
+
+
+
+::: {id="real_space" style="font-family: Montserrat;font-size:1.0em"}
+Fragmenting with unsupervised machine learning
+:::
+
+::: {style="font-family: Montserrat;font-size:.7em"}
+::: {.r-stack}
+![](images/large_polymer_example.png){.fragment width=60% fig-align="center" .fade-out fragment-index=0}
+
+![](images/methods.png){.fragment width=100% .fade-in-then-out fragment-index=0}
+
+![](images/descriptors.png){.fragment width=100% fragment-index=1.fade-in}
+
+:::
+:::
+
+
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:.9em"}
+Partitioning straightforward cases
+:::
+
+::: {style="font-family: Montserrat;font-size:.6em"}
+adjusted Rand index =1 -> expected fragmentation
+
+:::: {.columns}
+::: {.column width="50%"}
+
+- Wales water cluster database
+![](images/water4.png){height=7em}
+
+![](images/wc_tip4p_box_randidx_aps.png){width=80% }
+
+
+:::
+
+::: {.column width="50%"}
+
+- methylthiophene tetramers
+![](images/mt_monomer.png){height=7em}
+
+![](images/mt_wb97x-d_violin_randidx.png){width=80% fig-align="left"}
+
+:::
+::::
+
+Summary:
+
+:::
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:.9em"}
+A more ambiguous case: silyl ketene
+:::
+::: {style="font-family: Montserrat;font-size:.7em;text-align:center"}
+![](images/base.png){width=30%}
+![](images/trimer_render.png){width=30%}
+:::
+
+::: {style="font-family: Montserrat;font-size:.7em"}
+Questions:
+
+1. what is the error vs speed up for these methods?
+2. What factors impact descriptor?
+    - level of theory, basis
+:::
+
+::: {style="font-family: Montserrat;font-size:.5em"}
+
+Computational details:
+
+- vacuum embedding: $E_{\text{tot}}= \sum\limits_{i=1}^{N_{frag}} E_i$
+- $E_{\text{frag}}$ = Fragments with hydrogen caps - H only values
+- three fragments requested
+:::
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:.8em"}
+A more ambiguous case: silyl ketene
+:::
+
+::: {style="font-family: Montserrat;font-size:.7em; text-align:center"}
+
+
+::: {.r-stack}
+::: {.fragment fragment-index=1 .fade-out}
+![](images/er_su_trimers_desc_alg.png){width=70% }
+
+- spectral: lowest error/highest speed-up
+- structure only descriptors are still performing well!!
+- rounding has no benefit in small dataset
+:::
+
+::: {.fragment fragment-index=1 .fade-in-then-out}
+![](images/er_su_trimers_basis.png){width=70% }
+
+- spectral: no impact with basis set used
+- others unpredictable
+:::
+
+::: {.fragment fragment-index=3 .fade-in }
+![](images/er_su_trimers_lot.png){width=70% }
+
+- spectral: no impact with level of theory used
+- others unpredictable
+:::
+
+:::
+
+:::
+

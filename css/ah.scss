@@ -1,0 +1,56 @@
+/*-- scss:defaults --*/
+
+$body-color: #191919;
+$body-bg: #fff;
+$link-color: #51916c;
+
+/*-- scss:rules --*/
+
+.reveal .slide blockquote {
+  border-left: 3px solid $text-muted;
+  padding-left: 0.5em;
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,400;0,700;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700');
+$heading-font-family: 'Montserrat', sans-serif;
+$heading-font: 'Montserrat', sans-serif;
+$body-font-family: 'Open Sans', sans-serif;
+$base-font-size: 18px;
+$base-font-weight: 400;
+
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+// // Google Fonts
+// @import url(http://fonts.googleapis.com/css?family=Inter:400italic,700italic,400,700r);
+
+// // Font Variables
+// $roboto-slab:   Inter;   
+
+
+$bs-font-family-sans-serif:  Montserrat;
+  $font-family-serif:      'Montserrat', sans-serif;
+  //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+  $font-family-monospace:     'Montserrat', sans-serif; ;
+  $font-family-base:        'Montserrat', sans-serif;
+
+
+// $font-size-base:          12px !default;
+// $font-size-large:         ceil(($font-size-base * 1.2)) !default; // ~18px
+// $font-size-small:         ceil(($font-size-base * .85)) !default; // ~12px
+
+// $font-size-h1:            floor(($font-size-base * 1.1)) !default; // ~36px
+// $font-size-h2:            floor(($font-size-base * 1.2)) !default; // ~30px
+// $font-size-h3:            ceil(($font-size-base * 1.7)) !default; // ~24px
+// $font-size-h4:            ceil(($font-size-base * 1.25)) !default; // ~18px
+// $font-size-h5:            $font-size-base !default;
+// $font-size-h6:            ceil(($font-size-base * .85)) !default; // ~12px
+
+
+// headings
+$presentation-heading-font:   'Montserrat', sans-serif;;
+// $presentation-heading-color: #383d3d !default;
+$headings-font-family:   'Montserrat', sans-serif;;
+

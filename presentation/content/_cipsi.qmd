@@ -1,0 +1,76 @@
+::: {style="font-family: Montserrat;font-size:.8em"}
+Multideterminant impact on QMC trial wave functions
+<hr/>
+:::
+
+::: {style="font-family: Montserrat;font-size:.6em"}
+
+:::: {.columns}
+::: {.column width="60%"}
+$\Psi_n = \sum c_I^{(n)}\ket{D_I}$
+
+Full Hilbert space solution typically unattainable<br>
+hand-picked: restricted single-double CI<br>
+Selected Configuration Interaction: CIPSI<br>
+
+:::
+::: {.column width="40%"}
+::: {.fragment  fragment-index=1}
+::: {style="color: #56766A"}
+$e_\alpha = \frac{ \langle \Psi^{(n)}| {\hat H} | \alpha \rangle^2 }{E^{(n)} - \langle \alpha | {\hat H} | \alpha \rangle }.$
+:::
+:::
+:::
+::::
+
+
+
+::: {.r-stack}
+::: {.fragment fragment-index=1}
+::: {data-id="dot1" style="background: #56766A; width: 400px; height:400px; border-radius: 400px;text-align:center;padding:5px; color: #FFFFFF"}
+
+::: {.fragment fragment-index=4 .fade-out}
+
+$\{ \ket{\alpha} \}$
+
+:::
+::: {.fragment  .fade-out fragment-index=2}
+::: {style="font-size:.6em "}
+single & double excitations
+
+:::
+:::
+:::
+:::
+
+::: {.fragment  fragment-index=3}
+::: {.fragment  .fade-out}
+::: {data-id="dot2" style="background: #8FA37B; width: 275px; height: 275px; border-radius: 300px;text-align:center;padding:5px"}
+$\{ \ket{\alpha} \}_*^{(n)}$
+:::
+:::
+:::
+
+::: {.fragment  fragment-index=4 }
+::: {data-id="dot2" style="background: #B3BBA0; width: 275px; height: 275px; border-radius: 200px;text-align:center;padding:5px"}
+
+:::
+:::
+
+::: {.fragment fragment-index=0}
+::: {data-id="dot3" style="background: #B3BBA0; width:90px; height: 90px; border-radius: 200px;text-align:center;padding:10px"}
+::: {.fragment fragment-index=4 .fade-out}
+$\Psi_n$
+:::
+:::
+:::
+
+::: {.fragment fragment-index=4}
+::: {data-id="dot3" style="background: #B3BBA0; width: 50px; height: 50px; border-radius: 200px;text-align:center;padding:0px;"}
+$\Psi_{n+1}$
+
+:::
+:::
+
+:::
+:::

@@ -1,0 +1,93 @@
+
+::: {style="font-family: Montserrat;font-size:.9em;text-align:center"}
+Classical Monte Carlo
+<hr/>
+:::
+
+::: {style="font-family: Montserrat;font-size:.8em;text-align:center"}
+
+<img src="images/Pi_30K.gif" width="500" style="margin:auto" >
+</br>
+Estimating the value of $\pi$ with Monte Carlo sampling
+:::
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:1.0em"}
+Diffusion Monte Carlo <span style="font-size:.8em"> the highlights</span>
+<hr/>
+:::
+
+::: {style="font-family: Montserrat;font-size:.7em"}
+- relatively basis set independent
+- embarrassingly parallel
+- Fixed-node implementation scales $\sim N^3$
+
+Considerations
+
+**Importance sampling**: guiding wave function for efficient sampling
+
+**Fixed-node approximation:**
+
+- antisymmetry of Fermionic system $\rightarrow$ positive/negative portions $\rightarrow$ unable to use as probability distribution
+- "solution": fix nodes of $\Psi_T$
+
+    $\hookrightarrow$ necessitates accurate nodal surface of $\Psi_T$
+
+:::
+
+
+<!-- ---
+
+::: {style="font-family: Montserrat;font-size:1.0em"}
+Diffusion Monte Carlo <span style="font-size:.8em"> the highlights</span>
+<hr/>
+:::
+
+
+::: {style="font-family: Montserrat;font-size:.8em"}
+Recast the Schrodinger equation in imaginary time
+$$\frac{\partial \ket{\Psi}}{\partial \tau} = - \hat{H} \ket{\Psi} $$
+A formal solution:
+
+$$\left|\psi\left(\tau_{1}+\delta \tau\right)\right\rangle=e^{-\hat{H} \delta \tau}\left|\psi\left(\tau_{1}\right)\right\rangle$$
+
+Any state non-orthogonal to the ground state decays exponentially
+$$\lim _{\tau \rightarrow \infty}|\psi(\tau)\rangle=c_{0} e^{-\epsilon_{0} \tau}\left|\phi_{0}\right\rangle$$
+
+::: -->
+
+
+--- 
+
+
+::: {style="font-family: Montserrat;font-size:1.0em"}
+Diffusion Monte Carlo <span style="font-size:.8em"> the highlights</span>
+<hr/>
+:::
+
+:::: {.columns}
+::: {.column width="45%"}
+<img src="images/pkthimg230.png" style="height:95%"> </img>
+:::
+
+::: {.column width="55%"}
+::: {style="font-family: Montserrat;font-size:.8em; justify-content:center"}
+In real space, after some rearranging:
+$$ -\frac{\partial \psi(\mathbf{R}, \tau)}{\partial \tau} = $$
+
+$$\left[\sum_{i=1}^{N}-\frac{1}{2} \nabla_{i}^{2} \psi(\mathbf{R}, \tau)\right] \text{ diffusion}$$
+
+$$+$$
+
+$$\left(V(\mathbf{R})-E_{T}\right) \psi(\mathbf{R}, \tau) \text{ rate}$$
+
+:::
+
+
+:::
+::::
+
+
+

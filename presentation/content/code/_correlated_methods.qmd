@@ -1,0 +1,56 @@
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.colors as mc
+from matplotlib.lines import Line2D 
+from matplotlib.patches import Ellipse
+
+methods = ['semi-empirical','Hartree-Fock','Density Functional Theory','Configuration\n Interaction','Coupled Cluster','Quantum\n Monte Carlo']
+r = [2,4,3,6,7,3.5]
+theta = [1,3,4,5,6,5.5]
+size= [1730,6830 ,24800  , 3170 ,3590, 2810]
+xerrmin = np.array([2,4,3,4,6,3])
+xerrmax = np.array([2,4,3.8,14,8,5])
+xerrmax_label = np.array([2,4,3,10,8,5])
+
+cr = mc.to_rgba('r')
+cb = mc.to_rgba('b')
+cg = mc.to_rgba('g')
+color = [cr,cb,cb,cg,cg,cg]
+fig, ax = plt.subplots(figsize=(12,5))
+alpha= 0.5
+
+for midx,m in enumerate(methods):
+    ax.text((xerrmin[midx]+xerrmax_label[midx])/2 + .2, theta[midx], m, fontsize=20,ha='left',va='center_baseline')
+    a = Ellipse(((xerrmin[midx]+xerrmax[midx])/2,theta[midx] ),xerrmax[midx]-xerrmin[midx], .5,  facecolor=color[midx],zorder=2,alpha=.2,angle=20,)
+    # a.set_sketch_params(scale=1.4, length=10, randomness=10)
+    ax.add_artist(a)
+ax.scatter((xerrmin+xerrmax)/2, theta, marker='.',s=1000,c=color,alpha=alpha)
+
+ax.set_ylabel(r'accuracy of calculation $\rightarrow$',fontsize=20)
+ax.set_xlabel(r'computational scaling $\rightarrow$',fontsize=20)
+
+ax.grid(False)
+ax.set_xlim(1,9)
+ax.set_ylim(0,7)
+
+
+
+# Turn off tick labels
+ax.set_yticklabels([])
+ax.xaxis.set_major_formatter('$N^{x:.0f}$')
+ax.tick_params(axis='both', which='major', labelsize=20)
+
+l_labels=['semi-empirical','mean field','correlated']
+msize = 32
+l_lines = [
+Line2D([0],[0],marker='.',markersize=msize,c=cr, linestyle='',alpha=alpha),
+Line2D([0],[0],marker='.',markersize=msize,c=cb, linestyle='',alpha=alpha),
+Line2D([0],[0],marker='.',markersize=msize,c=cg, linestyle='',alpha=alpha)]
+
+ax.legend(l_lines,l_labels,loc="lower right",fontsize=18)
+plt.tight_layout()
+
+plt.savefig('images/correlated_methods.png',dpi=300)
+plt.show()
+```

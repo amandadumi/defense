@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="slide_base_files/libs/clipboard/clipboard.min.js"></script>
+<script src="slide_base_files/libs/quarto-html/tabby.min.js"></script>
+<script src="slide_base_files/libs/quarto-html/popper.min.js"></script>
+<script src="slide_base_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="slide_base_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="slide_base_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="slide_base_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.2.269">
+
+  <meta name="author" content="Amanda Dumi">
+  <title>slide_base</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="slide_base_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="slide_base_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+  <link rel="stylesheet" href="slide_base_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="css/my_css.css">
+  <link href="slide_base_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="slide_base_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="slide_base_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="slide_base_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level2">
+
+<div class="hidden">
+
+</div>
+<div style="font-family: Montserrat;  text-align: center;font-size: .9em">
+<p style="font-size:1.5em">
+Quantum Monte Carlo and Molecular Fragmentation Methods for the Treatment of Electron Correlation in Molecules and Solids
+</p>
+</div>
+<p><br> <br> <br> <br></p>
+<div style="font-family: Montserrat;  text-align: center;font-size: .7em">
+Amanda Dumi <br> Dissertation Defense <br>
+<div id="current_date">
+<p></p>
+<script>
+date = new Date();
+year = date.getFullYear();
+month = date.getMonth() + 1;
+day = date.getDate();
+document.getElementById("current_date").innerHTML = month + "/" + day + "/" + year;
+</script>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em">
+Electronic Structure Problem:
+<hr>
+</div>
+<div style="font-family: Montserrat;font-size:.8em;text-align:left">
+<p>describe the motions of electrons in atoms or molecule <span class="math display">\[\hat{H}\left|\Psi\right&gt;\ =\ E\left|\Psi\right&gt;\]</span></p>
+</div>
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Ie_only.png" class="fragment" style="width:40.0%"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Ie_interaction.png" class="fragment" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em">
+Electronic Structure Methods:
+<hr>
+</div>
+<div class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<p><img data-src="slide_base_files/figure-revealjs/cell-2-output-1.png" width="1135" height="461"></p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em">
+Motivating systems
+<hr>
+</div>
+<p>Can we use or develop methods which allow for a reasonable treatment of the following systems?</p>
+<p><img data-src="images/hgraphene_python.png" style="width:32.0%"> <img data-src="images/h2o4_labeled.png" style="width:30.0%"> <img data-src="images/trimer_render.png" style="width:34.0%"></p>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em; padding-bottom:.3em">
+Reliable approximations for electronic structure
+<hr>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div data-id="box2" style="background:  #caeac7; width: 98%; height: 250px; border-radius: 200px;text-align:center;color: #000000;font-size:.8em;padding-top:1.5em">
+<p><a href="#integrals"><strong>Stochastic sampling</strong></a></p>
+<p>Quantum Monte Carlo:<br> applications and developments</p>
+</div>
+<div data-id="box2" style="background:  #caeac7; width: 98%; height: 250px; border-radius: 200px;text-align:center;color: #000000;font-size:.8em;padding-top:1.5em;margin-top:5%">
+<p><a href="#hilbert_space"><strong>Hilbert space sampling</strong></a></p>
+<p>selected CI for<br> QMC trial wave functions</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div data-id="box2" style="background:  #caeac7; width: 99%; height: 250px; border-radius: 100px;text-align:center;color: #000000;font-size:.8em;margin-top:25%;padding-top:1.5em">
+<p><a href="#real_space"><strong>Real space partitioning</strong></a></p>
+<p>molecular fragments<br> determined with unsupervised machine learning<br></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em">
+Electronic Structure Problem:
+<hr>
+</div>
+<div style="font-family: Montserrat;font-size:.8em;text-align:left">
+<p>describe the motions of electrons in atoms or molecule <span class="math display">\[\hat{H}\left|\Psi\right&gt;\ =\ E\left|\Psi\right&gt;\]</span></p>
+<p>Approximations:</p>
+<div class="r-stack">
+<div class="fragment fade-in-then-out" style="margin-left: 0.5%; margin-top:0">
+<p><span class="math display">\[\begin{align}
+\hat{H} &amp;= \sum_{i}\left[ -\frac{1}{2}\nabla_i^2
+-\sum_{iA}\frac{Z_A}{\left|\vec{r}_i-\vec{R}_A|\right|}\right]
++
+\sum_{i&lt;j}\frac{1}{\left|\vec{r}_i - \vec{r}_j\right|} \\
+
+\hat{H} &amp;= \hat{h}(1) + \hat{v}(1,2)
+\end{align}\]</span></p>
+<p>Non-relativistic, time-independent</p>
+<p>Born-Oppenheimer: nuclei are stationary</p>
+</div>
+<div class="fragment fade-in-then-out" style="margin-left: 0.5%; margin-top:0">
+<p>Single particle orbitals <!-- $$\Psi= \chi_{1}\left(\mathbf{x}_{1}\right)\chi_{2}\left(\mathbf{x}_{2}\right)\dots\chi_{N}\left(\mathbf{x}_{N}\right)$$ --> <span class="math display">\[\Psi=\frac{1}{\sqrt{N !}}\left|\begin{array}{cccc}
+    \chi_{1}\left(\mathbf{x}_{1}\right) &amp; \chi_{2}\left(\mathbf{x}_{1}\right) &amp; \cdots &amp; \chi_{N}\left(\mathbf{x}_{1}\right) \\
+    \chi_{1}\left(\mathbf{x}_{2}\right) &amp; \varphi_{2}\left(\mathbf{x}_{2}\right) &amp; \cdots &amp; \chi_{N}\left(\mathbf{x}_{2}\right) \\
+    \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+    \chi_{1}\left(\mathbf{x}_{N}\right) &amp; \chi_{2}\left(\mathbf{x}_{N}\right) &amp; \cdots &amp; \chi_{N}\left(\mathbf{x}_{N}\right)
+    \end{array}\right| \]</span></p>
+</div>
+<div class="fragment fade-in" style="margin-left: 0.5%; margin-top:0">
+<p>integrals <span class="math display">\[\hat{H} = \hat{h}(1) + \hat{v}(1,2)\]</span></p>
+<p><span class="math display">\[\begin{align}
+\langle i \rvert \hat{h}(1) \lvert j \rangle\ &amp;=\ \int dx_1 \chi_i(x_1)\hat{h}(1) \chi_j (x_1)\\
+\langle ij \rvert \hat{v}(1,2) \lvert kl \rangle\ &amp;=\ \int dx_1dx_2 \chi_i^*(x_1)\chi_j^*(x_2)\hat{v}(1,2) \chi_k (x_1)\chi_l(x_2)
+\end{align}\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em">
+Electronic Structure Methods:
+<hr>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<p><img data-src="slide_base_files/figure-revealjs/cell-3-output-1.png" width="1135" height="461"></p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em">
+Hartree-Fock: a mean field approach (WIP)
+<hr>
+</div>
+<p><br></p>
+<div style="font-family: Montserrat;font-size:.8em;padding-top:0">
+<p>Electrons feel the repulsive force of an average electron cloud.</p>
+<p><span class="math inline">\(\hookrightarrow\)</span> motion of individual electrons are not correlated</p>
+<div class="r-stack">
+<div class="fragment fade-out" data-fragment-index="4">
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Ie_interaction.png" class="fragment" style="width:40.0%" data-fragment-index="1"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Ie_hf.png" class="fragment" style="width:40.0%" data-fragment-index="2"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="4">
+<p><span class="math display">\[ E_{HF} = \sum_i^{elec}\langle i \rvert h(1) \lvert i \rangle + \sum_{i&gt;j}^{elec}\lbrack ii \rvert jj\rbrack - \lbrack ii \rvert jj\rbrack\]</span></p>
+<p>Coulomb <span class="math inline">\(\lbrack ii \rvert jj\rbrack =\ \int dx_1dx_2 \chi_i^*(x_1)\chi_j^*(x_2)\hat{v}(1,2) \chi_i (x_1)\chi_j(x_2)\)</span></p>
+<p>Exchange <span class="math inline">\(\lbrack ij \rvert ji\rbrack =\ \int dx_1dx_2 \chi_i^*(x_1)\chi_j^*(x_2)\hat{v}(1,2) \chi_j (x_1)\chi_i(x_2)\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Variational Energy</p>
+<p><span class="math display">\[
+E_v\ = \frac{\int dR\Psi^*(R) \hat{H} \Psi(R)}{\int dR\Psi^*(R)\ \Psi(R)}\ \geq\ E_0
+\]</span></p>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em">
+Correlation Energy
+<hr>
+</div>
+<div style="font-family: Montserrat;font-size:.8em">
+<p><span class="math display">\[E_{corr}\ =\ E_{exact}- E_{HF}\]</span></p>
+<div class="columns">
+<div class="column" style="width:20%;">
+<p><img src="images/water_ex.png" style="align:center;width:95%"> </p>
+</div><div class="column" style="width:80%;">
+<div style="font-size:1.2em">
+<div class="cell" data-font-size="30pt" data-execution_count="4">
+<details>
+<summary>Vary 1 O-H bond distance in water</summary>
+<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="1|5,7|11-12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>oh_dist <span class="op">=</span> np.arange(<span class="fl">0.6</span>, <span class="fl">1.8</span>, <span class="fl">0.2</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="cf">for</span> r <span class="kw">in</span> oh_dist:</span>
+<span id="cb1-3"><a href="#cb1-3"></a>     mol_h2o <span class="op">=</span> gto.M(</span>
+<span id="cb1-4"><a href="#cb1-4"></a>     atom <span class="op">=</span> <span class="ss">f"""</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="ss">     O 0 0 0; H 0 1 0; H 0 0 </span><span class="sc">{</span>r<span class="sc">}</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="ss">     """</span>,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>     basis <span class="op">=</span> <span class="st">'sto-3g'</span>,</span>
+<span id="cb1-8"><a href="#cb1-8"></a>     verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a>     rhf_h2o <span class="op">=</span> scf.RHF(mol_h2o)</span>
+<span id="cb1-11"><a href="#cb1-11"></a>     e_hf <span class="op">=</span> rhf_h2o.kernel()</span>
+<span id="cb1-12"><a href="#cb1-12"></a>     e_fci <span class="op">=</span> fci.FCI(rhf_h2o).kernel()[<span class="dv">0</span>]</span>
+<span id="cb1-13"><a href="#cb1-13"></a>     </span>
+<span id="cb1-14"><a href="#cb1-14"></a>     all_e_hf <span class="op">=</span> np.append(all_e_hf,e_hf)</span>
+<span id="cb1-15"><a href="#cb1-15"></a>     all_e_fci <span class="op">=</span> np.append(all_e_fci,e_fci)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="fragment">
+<div class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<p><img data-src="slide_base_files/figure-revealjs/cell-6-output-1.png" width="886" height="388"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em">
+Correlation Energy
+<hr>
+</div>
+<div style="font-family: Montserrat;font-size:.8em">
+<p><span class="math display">\[E_{corr}\ =\ E_{exact}- E_{HF}\]</span> When does <span class="math inline">\(E_{corr}\)</span> matter?</p>
+<ul>
+<li>Van der Waals interactions</li>
+<li>relative energetics</li>
+<li>magnetism</li>
+<li>descriptions of lanthanides</li>
+<li>…</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Correlation</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>static</td>
+<td>need of more than one Slater determinant</td>
+</tr>
+<tr class="even">
+<td>dynamic</td>
+<td>electron repulsion due to proximity</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em">
+Electronic Structure methods
+<hr>
+</div>
+<div class="r-stack">
+<!-- {{< include content/code/_correlated_methods.qmd >}} -->
+<div class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<p><img data-src="slide_base_files/figure-revealjs/cell-7-output-1.png" width="1135" height="461"></p>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<p><img data-src="slide_base_files/figure-revealjs/cell-8-output-1.png" width="1135" height="461"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<!-- ## {background-image="images/dft_into_dens.jpeg" background-opacity=0.3 background-size=90%} -->
+<div style="font-family: Montserrat;font-size:1.0em">
+Density Functional Theory
+<hr>
+</div>
+
+<img data-src="images/hks_new.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em">
+DFT: exchange-correlation functionals
+<hr>
+</div>
+<!-- $$
+E_{KS}[n]\ =\ T_{ip}[n] + \int d\text{r} v_{ext}(r)n(r) + E_H[n] + <span style="color:#56766A">E_{xc}[n]</span>
+$$ -->
+<p><span class="math display">\[E_{xc}[n]\
+=\ \underbrace{\Delta T[n]}_{\texttt{kinetic energy}\atop\texttt{correction}}\ +\ \overbrace{\Delta V_{ee}[n]}^{\texttt{nonclassical}\atop\texttt{Vee correction}}\]</span></p>
+<p><span class="math inline">\(E_{xc}\)</span> form unknown. Approximate density functionals used: <br></p>
+<div class="r-hstack">
+<div data-id="box2" style="background: #56766A; width: 150px; height: 150px; border-radius: 200px;text-align:center;color: #FFFFFF">
+<p><br> LDA</p>
+</div>
+<p><span class="math inline">\(\rightarrow\)</span></p>
+<div data-id="box2" style="background:  #56766A; width: 150px; height: 150px; border-radius: 200px;text-align:center;color: #FFFFFF">
+<p><br> GGAa</p>
+</div>
+<p><span class="math inline">\(\rightarrow\)</span></p>
+<div data-id="box2" style="background:  #56766A; width: 150px; height: 150px; border-radius: 200px;text-align:center;color: #FFFFFF">
+<p><br> mGGA</p>
+</div>
+<p><span class="math inline">\(\rightarrow\)</span></p>
+<div data-id="box2" style="background:  #56766A; width: 150px; height: 150px; border-radius: 200px;text-align:center;color: #FFFFFF;vertical-align:middle">
+<p><br> hybrid</p>
+</div>
+<p><span class="math inline">\(\rightarrow\)</span></p>
+<div data-id="box2" style="background:  #FFFFFF; width: 150px; height: 150px; border-radius: 200px;text-align:center;color: #000000;vertical-align:middle">
+<p>generally more accurate</p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em">
+DFT challenges
+<hr>
+</div>
+<div style="font-family: Montserrat;font-size:.8em;padding-top:0">
+<ul>
+<li>functionals <span class="math inline">\(\neq\)</span> systematically improvable</li>
+<li>DFT fails in strongly correlated regimes</li>
+<li>functionals often created to target <span class="math inline">\(E\)</span> and <span class="math inline">\(\rho\)</span> only, meaning other observables may not be reliable</li>
+<li>wrong functional choice for system physics</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em;text-align:center; padding-bottom:1em">
+Reduce cost through various system reductions
+<hr>
+</div>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div style="font-family: Montserrat;font-size:.8em;text-align:center;padding-top:0">
+<div class="fragment highlight-blue">
+<p><a href="#integrals"><strong>Solving integrals<br> through sampling</strong></a></p>
+<p>Quantum Monte Carlo: applications and developments</p>
+</div>
+<p><br> <br> <br></p>
+<p><a href="#hilbert_space"><strong>Hilbert space</strong></a></p>
+<p>selected CI as approximate trial wave functions</p>
+</div>
+</div><div class="column" style="width:45%;">
+<div style="font-family: Montserrat;font-size:.8em;text-align:center;padding-top:3em">
+<p><a href="#real_space"><strong>Real space</strong></a></p>
+<p>Determining molecular fragments with unsupervised machine learning (UML)</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section" class="slide level2 scrollable">
+<h2></h2>
+<div style="font-family: Montserrat;font-size:.9em">
+QMC application:<span style="font-size:.9em"> Hydrogen on graphene <sup>1</sup></span>
+<hr>
+</div>
+
+<div style="font-family: Montserrat;font-size:.75em">
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><img data-src="images/hgraphene_python.png" style="width:80.0%"></p>
+<!-- <img src="images/hgraphene_python.png" style="text-align:center;width:75%"/> </img> -->
+</div><div class="column" style="width:55%;">
+<p><br></p>
+<p><span class="math inline">\(E_b=E_{dgr+H}-(E_{gr}+E_{H})\)</span> <br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th><span class="math inline">\(E_b\)</span> (meV)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PW91</td>
+<td>-810 to -830, -870</td>
+</tr>
+<tr class="even">
+<td>PBE</td>
+<td>-790, -840, -980</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<div class="fragment">
+<ul>
+<li><p>functional dependent <span class="math inline">\(E_b\)</span></p></li>
+<li><p>a need for benchmark values</p>
+<p><span class="math inline">\(\hookrightarrow\)</span> can be provided by QMC</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn1"><p><span class="citation" data-cites="doi:10.1063/5.0085982">A. Dumi et al, <a href="#/references" role="doc-biblioref" onclick=""><span>“The Binding of Atomic Hydrogen on Graphene from Density Functional Theory and Diffusion Monte Carlo Calculations,”</span> <em>The Journal of Chemical Physics</em>, 156.14 (2022), 144702DOI:</a><a href="#/references" role="doc-biblioref" onclick="">10.1063/5.0085982</a> .</span></p></li></ol></aside></section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em">
+Diffusion Monte Carlo <span style="font-size:.8em"> the highlights</span>
+<hr>
+</div>
+<div style="font-family: Montserrat;font-size:.8em">
+<ul>
+<li>relatively basis set independent</li>
+<li>embarrassingly parallel</li>
+<li>fixed node implementation scales <span class="math inline">\(\sim N^3\)</span></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:.8em">
+Classical Monte Carlo
+<hr>
+</div>
+<p><img src="images/Pi_30K.gif" width="500" style="margin:auto"> <br> Estimating the value of <span class="math inline">\(\pi\)</span> with Monte Carlo sampling</p>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em">
+Diffusion Monte Carlo <span style="font-size:.8em"> the highlights</span>
+<hr>
+</div>
+<div style="font-family: Montserrat;font-size:.8em">
+<p>Recast the Schrodinger equation in imaginary time <span class="math display">\[\frac{\partial \left|\Psi\right&gt;}{\partial \tau} = - \hat{H} \left|\Psi\right&gt; \]</span> A formal solution:</p>
+<p><span class="math display">\[\left|\psi\left(\tau_{1}+\delta \tau\right)\right\rangle=e^{-\hat{H} \delta \tau}\left|\psi\left(\tau_{1}\right)\right\rangle\]</span></p>
+<p>Any state non-orthogonal to the ground state decays exponentially <span class="math display">\[\lim _{\tau \rightarrow \infty}|\psi(\tau)\rangle=c_{0} e^{-\epsilon_{0} \tau}\left|\phi_{0}\right\rangle\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em">
+Diffusion Monte Carlo <span style="font-size:.8em"> the highlights</span>
+<hr>
+</div>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><img src="images/pkthimg230.png" style="height:95%"> </p>
+</div><div class="column" style="width:55%;">
+<div style="font-family: Montserrat;font-size:.8em; justify-content:center">
+<p>In real space, after some rearranging: <span class="math display">\[ -\frac{\partial \psi(\mathbf{R}, \tau)}{\partial \tau} = \]</span></p>
+<p><span class="math display">\[\left[\sum_{i=1}^{N}-\frac{1}{2} \nabla_{i}^{2} \psi(\mathbf{R}, \tau)\right] \text{ diffusion}\]</span></p>
+<p><span class="math display">\[+\]</span></p>
+<p><span class="math display">\[\left(V(\mathbf{R})-E_{T}\right) \psi(\mathbf{R}, \tau) \text{ rate}\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1em">
+Algorithmic considerations
+<hr>
+</div>
+<div style="font-family: Montserrat;font-size:.9em">
+<p>Importance sampling</p>
+</div>
+<div style="font-family: Montserrat;padding-bottom:2em;font-size:.8em">
+<ul>
+<li>use of trial wave function for efficient sampling</li>
+</ul>
+</div>
+<div style="font-family: Montserrat;font-size:.9em">
+<p>Fixed-node approximation</p>
+</div>
+<div style="font-family: Montserrat;font-size:.8em">
+<ul>
+<li><p>antisymmetry of Fermionic system -&gt; positive/negative portions <span class="math inline">\(\rightarrow\)</span> unable to use as probability distribution</p></li>
+<li><p>“solution”: fix nodes of <span class="math inline">\(\Psi_T\)</span></p>
+<p><span class="math inline">\(\hookrightarrow\)</span> necessitates accurate nodal surface of <span class="math inline">\(\Psi_T\)</span></p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:.9em">
+QMC application:<span style="font-size:.9em"> Hydrogen on graphene</span>
+<hr>
+</div>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div style="font-family: Montserrat;font-size:.55em;text-align:center">
+<table>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Binding energy (meV)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PW91</td>
+<td>-810 to -830, -870</td>
+</tr>
+<tr class="even">
+<td>PBE</td>
+<td>-790, -840, -980</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>PBE<sup>1</sup></td>
+<td>-820</td>
+</tr>
+<tr class="odd">
+<td>PBE<sup>2</sup></td>
+<td>-871</td>
+</tr>
+<tr class="even">
+<td>PBE0<sup>2</sup></td>
+<td>-851 (-800)</td>
+</tr>
+<tr class="odd">
+<td>HSE<sup>2</sup></td>
+<td>-794 (-743)</td>
+</tr>
+<tr class="even">
+<td>DMC</td>
+<td><span style="color: blue">-691 <span class="math inline">\(\pm\)</span> 19 </span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="font-family: Montserrat;font-size:.5em;text-align:left">
+<p><sup>1</sup> plane wave basis; <sup>2</sup> GTO basis</p>
+<div class="fragment" data-fragment-index="1">
+<p><span class="math display">\[\Delta\rho_{system} =\rho_{system}^{DMC}- \rho_{system}^{DFT}\]</span></p>
+</div>
+</div>
+</div><div class="column" style="width:55%;">
+<div style="font-family: Montserrat;font-size:.7em;text-align:left">
+<ul>
+<li><strong>PBE result obtained with a plane-wave basis set results in a <span class="math inline">\(E_b\)</span> about 20% larger in magnitude</strong> than the DMC result.</li>
+<li><span class="math inline">\(E_b\)</span> variation <span class="math inline">\(\rightarrow\)</span> order of magnitude change in the H evolution current at room temperature on graphene electrodes</li>
+</ul>
+<div class="fragment" data-fragment-index="1">
+<ul>
+<li>There are <strong>significant differences in the DMC and PBE <span class="math inline">\(\rho\)</span></strong></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" data-fragment-index="1">
+<div style="font-family: Montserrat;font-size:.4em;text-align:bottom">
+<!-- $$\Delta\rho_{system} =\rho_{system}^{DMC}- \rho_{system}^{DFT}$$ -->
+<figcaption style="font-family: Montserrat;font-size:1.5em;padding-left:10em;padding-top:0em  ">
+PBE <span style="padding-left:15em">HSE</span>
+</figcaption>
+<p><img src="images/aed63_qmc_2d_slice_hgraphene_cropped.png" style="width:38%;text-align:left;margin:0em;">  <img src="images/qmc_2d_slice_hgraphene_hse.png" style="width:48%;text-align:center;margin:0em;"> </p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em; padding-bottom:.3em">
+Reliable approximations for electronic structure
+<hr>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div data-id="box2" style="background:  #caeac7; width: 98%; height: 250px; border-radius: 200px;text-align:center;color: #000000;font-size:.8em;padding-top:1.5em">
+<p><a href="#integrals"><strong>Stochastic sampling</strong></a></p>
+<p>Quantum Monte Carlo:<br> applications and developments</p>
+</div>
+<div data-id="box2" style="background:  #caeac7; width: 98%; height: 250px; border-radius: 200px;text-align:center;color: #000000;font-size:.8em;padding-top:1.5em;margin-top:5%">
+<p><a href="#hilbert_space"><strong>Hilbert space sampling</strong></a></p>
+<p>selected CI for<br> QMC trial wave functions</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div data-id="box2" style="background:  #caeac7; width: 99%; height: 250px; border-radius: 100px;text-align:center;color: #000000;font-size:.8em;margin-top:25%;padding-top:1.5em">
+<p><a href="#real_space"><strong>Real space partitioning</strong></a></p>
+<p>molecular fragments<br> determined with unsupervised machine learning<br></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div id="hilbert_space" style="font-family: Montserrat;font-size:.9em">
+QMC application:<span style="font-size:.9em"> non-valence correlation bound anion<span class="citation" data-cites="doi:10.1063/5.0030942"><sup>1</sup></span></span>
+<hr>
+</div>
+
+<div style="font-family: Montserrat;font-size:.7em;padding-top:.2em">
+<ul>
+<li>present in graphene sheets and C<span class="math inline">\(_{60}\)</span> clusters</li>
+<li>rely on an accurate description of <span class="math inline">\(E_{corr}\)</span> to bind <span class="math inline">\(\rightarrow\ E_{corr} = E_{true}- E_{HF}\)</span></li>
+</ul>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<figure>
+<img src="images/h2o4_labeled.png" style=";width:70%"> 
+<figcaption style="font-family: Montserrat;font-size:.4em;padding-left:6em  ">
+<p>model system: (H<span class="math inline">\(_2\)</span>O)<span class="math inline">\(_4\)</span></p>
+</figcaption>
+</figure>
+</div><div class="column" style="width:50%;">
+<figure>
+<img src="images/hf_only_orbitalr2.png" style="padding-bottom:0pt;width:75%;margin:0em"> 
+<p style="font-family: Montserrat;font-size:.4em;margin:0em">
+Radial integration of Hartree-Fock orbital density, <span class="math inline">\(R=4\)</span> Angstroms
+</p>
+</figure>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn2"><p><a href="#/references" role="doc-biblioref" onclick="">S. Upadhyay et al, <span>“The Role of High-Order Electron Correlation Effects in a Model System for Non-Valence Correlation-Bound Anions,”</span> <em>The Journal of Chemical Physics</em>, 153.22 (2020), 224118DOI:</a><a href="#/references" role="doc-biblioref" onclick="">10.1063/5.0030942</a> .</p></li></ol></aside></section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:.8em">
+<p>Multideterminant <span class="math inline">\(\Psi_T\)</span></p>
+</div>
+<div style="font-family: Montserrat;font-size:.6em">
+<p>hand-picked: restricted single-double CI</p>
+<p>Selected Configuration Interaction: CIPSI</p>
+</div>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><span class="math inline">\(\Psi_n = \sum c_I^{(n)}\left|D_I\right&gt;\)</span></p>
+</div><div class="column" style="width:40%;">
+<div class="fragment" data-fragment-index="1">
+<div style="color: #56766A">
+<p><span class="math inline">\(e_\alpha = \frac{ \langle \Psi^{(n)}| {\hat H} | \alpha \rangle^2 }{E^{(n)} - \langle \alpha | {\hat H} | \alpha \rangle }.\)</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="r-stack">
+<div class="fragment" data-fragment-index="1">
+<div data-id="dot1" style="background: #56766A; width: 400px; height:400px; border-radius: 400px;text-align:center;padding:5px; color: #FFFFFF">
+<div class="fragment fade-out" data-fragment-index="4">
+<p><span class="math inline">\(\{ \left|\alpha\right&gt; \}\)</span></p>
+</div>
+<div class="fragment fade-out" data-fragment-index="2">
+<div style="font-size:.6em ">
+<p>single &amp; double excitations</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" data-fragment-index="3">
+<div class="fragment fade-out">
+<div data-id="dot2" style="background: #8FA37B; width: 275px; height: 275px; border-radius: 300px;text-align:center;padding:5px">
+<p><span class="math inline">\(\{ \left|\alpha\right&gt; \}_*^{(n)}\)</span></p>
+</div>
+</div>
+</div>
+<div class="fragment" data-fragment-index="4">
+<div data-id="dot2" style="background: #B3BBA0; width: 275px; height: 275px; border-radius: 200px;text-align:center;padding:5px">
+
+</div>
+</div>
+<div class="fragment" data-fragment-index="0">
+<div data-id="dot3" style="background: #B3BBA0; width:90px; height: 90px; border-radius: 200px;text-align:center;padding:10px">
+<div class="fragment fade-out" data-fragment-index="4">
+<p><span class="math inline">\(\Psi_n\)</span></p>
+</div>
+</div>
+</div>
+<div class="fragment" data-fragment-index="4">
+<div data-id="dot3" style="background: #B3BBA0; width: 50px; height: 50px; border-radius: 200px;text-align:center;padding:0px;">
+<p><span class="math inline">\(\Psi_{n+1}\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:.9em">
+(H<span class="math inline">\(_2\)</span>O)<span class="math inline">\(_4\)</span> Results
+<hr>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img src="images/aed63_water4toc.png" style="width:100%"> </p>
+</div><div class="column" style="width:60%;">
+<div style="font-family: Montserrat;font-size:.55em">
+<table>
+<colgroup>
+<col style="width: 55%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>wave function</th>
+<th>EBE (meV)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HF</td>
+<td>-0.4</td>
+</tr>
+<tr class="even">
+<td>EOM-CCSD</td>
+<td>180.6</td>
+</tr>
+<tr class="odd">
+<td>EOM-CCSD(T)(a)∗</td>
+<td><span style="color:orange">195.8 </span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>DMC</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SD/HF</td>
+<td>183 <span class="math inline">\(\pm\)</span> 10</td>
+</tr>
+<tr class="even">
+<td>SD/B3LYP</td>
+<td>212 <span class="math inline">\(\pm\)</span> 11</td>
+</tr>
+<tr class="odd">
+<td>SD/HF(N)//SD/NO SDCI(A)</td>
+<td><span style="color:blue">205 <span class="math inline">\(\pm\)</span> 10 </span></td>
+</tr>
+<tr class="even">
+<td>MD/CIPSI NO</td>
+<td><span style="color:blue">190 <span class="math inline">\(\pm\)</span> 9</span></td>
+</tr>
+<tr class="odd">
+<td><strong>AFQMC</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SD/HF(N)//SD/NO SDCI(A)</td>
+<td><span style="color:blue">194 <span class="math inline">\(\pm\)</span> 10 </span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div style="font-family: Montserrat;font-size:.7em">
+<ul>
+<li><span style="color:blue">DMC, AFQMC with multideterminant trial</span> agrees with <span style="color:orange">EOM-CCSD(T)(a)* result </span></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:.9em">
+(H<span class="math inline">\(_2\)</span>O)<span class="math inline">\(_4\)</span> Radial Integration
+<hr>
+</div>
+<div class="columns">
+<div class="column" style="width:65%;">
+<p><img src="images/r4_orbitalr2.png" style="width:100%;"> </p>
+</div><div class="column" style="width:35%;">
+<div style="font-family: Montserrat;font-size:.8em">
+<p><span class="math inline">\(R\)</span> = 4 Angstroms</p>
+<ul>
+<li>HF does not bind</li>
+<li>B3LYP shoulder, likely due to self interaction error</li>
+<li>rSDCI shape agrees with EOM</li>
+<li>CIPSI used B3LYP orbitals, shoulder still present, but lessened.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em; padding-bottom:.3em">
+Reliable approximations for electronic structure
+<hr>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div data-id="box2" style="background:  #caeac7; width: 98%; height: 250px; border-radius: 200px;text-align:center;color: #000000;font-size:.8em;padding-top:1.5em">
+<p><a href="#integrals"><strong>Stochastic sampling</strong></a></p>
+<p>Quantum Monte Carlo:<br> applications and developments</p>
+</div>
+<div data-id="box2" style="background:  #caeac7; width: 98%; height: 250px; border-radius: 200px;text-align:center;color: #000000;font-size:.8em;padding-top:1.5em;margin-top:5%">
+<p><a href="#hilbert_space"><strong>Hilbert space sampling</strong></a></p>
+<p>selected CI for<br> QMC trial wave functions</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div data-id="box2" style="background:  #caeac7; width: 99%; height: 250px; border-radius: 100px;text-align:center;color: #000000;font-size:.8em;margin-top:25%;padding-top:1.5em">
+<p><a href="#real_space"><strong>Real space partitioning</strong></a></p>
+<p>molecular fragments<br> determined with unsupervised machine learning<br></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:.9em">
+Conclusions and future directions:
+<hr>
+</div>
+<p>Quantum Monte Carlo: Using stochastic sampling to solve the Schrodinger equation</p>
+<p>hgraphene:</p>
+<ul>
+<li>in cases where DFT provided inconsistent results</li>
+<li>still questions to explore about functional driven vs density driven</li>
+</ul>
+<p>h2o4:</p>
+<ul>
+<li>a model case for NVCBs was treated successfully in QMC</li>
+<li>Although choice of trial wave function as sensitive: hand picked and CIPSI wave functions performed well as trials.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div id="real_space" style="font-family: Montserrat;font-size:1.0em">
+<p>Fragmenting with unsupervised machine learning</p>
+</div>
+<div style="font-family: Montserrat;font-size:.7em">
+<p>Problem</p>
+</div>
+
+<img data-src="images/fragment_demo.png" style="width:100.0%" class="r-stretch"></section>
+<section class="slide level2">
+
+<div id="real_space" style="font-family: Montserrat;font-size:1.0em">
+<p>(WIP) Other fragment determination methods</p>
+</div>
+<ul>
+<li>SMFA</li>
+<li>Density convergence</li>
+<li>AIM</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div id="real_space" style="font-family: Montserrat;font-size:1.0em">
+<p>Fragmenting with unsupervised machine learning</p>
+</div>
+<div style="font-family: Montserrat;font-size:.7em">
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/large_polymer_example.png" class="fragment fade-out" style="width:60.0%" data-fragment-index="0"></p>
+</figure>
+</div>
+<p><img data-src="images/methods.png" class="fragment fade-in-then-out" style="width:100.0%" data-fragment-index="0"></p>
+<p><img data-src="images/descriptors.png" class="fragment" style="width:100.0%" data-fragment-index="1.fade-in"></p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:.9em">
+<p>Partitioning straightforward cases</p>
+</div>
+<div style="font-family: Montserrat;font-size:.6em">
+<p>adjusted Rand index =1 -&gt; expected fragmentation</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Wales water cluster database <img data-src="images/water4.png" style="height:7em"></li>
+</ul>
+<p><img data-src="images/wc_tip4p_box_randidx_aps.png" style="width:80.0%"></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>methylthiophene tetramers <img data-src="images/mt_monomer.png" style="height:7em"></li>
+</ul>
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="images/mt_wb97x-d_violin_randidx.png" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Summary:</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:.9em">
+<p>A more ambiguous case: silyl ketene</p>
+</div>
+<div style="font-family: Montserrat;font-size:.7em;text-align:center">
+<p><img data-src="images/base.png" style="width:30.0%"> <img data-src="images/trimer_render.png" style="width:30.0%"></p>
+</div>
+<div style="font-family: Montserrat;font-size:.7em">
+<p>Questions:</p>
+<ol type="1">
+<li>what is the error vs speed up for these methods?</li>
+<li>What factors impact descriptor?
+<ul>
+<li>level of theory, basis</li>
+</ul></li>
+</ol>
+</div>
+<div style="font-family: Montserrat;font-size:.5em">
+<p>Computational details:</p>
+<ul>
+<li>vacuum embedding: <span class="math inline">\(E_{\text{tot}}= \sum\limits_{i=1}^{N_{frag}} E_i\)</span></li>
+<li><span class="math inline">\(E_{\text{frag}}\)</span> = Fragments with hydrogen caps - H only values</li>
+<li>three fragments requested</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:.8em">
+A more ambiguous case: silyl ketene
+
+</div>
+<div style="font-family: Montserrat;font-size:.7em; text-align:center">
+<div class="r-stack">
+<div class="fragment fade-out" data-fragment-index="1">
+<p><img data-src="images/er_su_trimers_desc_alg.png" style="width:70.0%"></p>
+<ul>
+<li>spectral: lowest error/highest speed-up</li>
+<li>structure only descriptors are still performing well!!</li>
+<li>rounding has no benefit in small dataset</li>
+</ul>
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="1">
+<p><img data-src="images/er_su_trimers_basis.png" style="width:70.0%"></p>
+<ul>
+<li>spectral: no impact with basis set used</li>
+<li>others unpredictable</li>
+</ul>
+</div>
+<div class="fragment fade-in" data-fragment-index="3">
+<p><img data-src="images/er_su_trimers_lot.png" style="width:70.0%"></p>
+<ul>
+<li>spectral: no impact with level of theory used</li>
+<li>others unpredictable</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:.8em">
+Future Directions
+
+</div>
+<ul>
+<li>short term: large polymer study.</li>
+<li>2 ody density matrix as descriptor</li>
+<li>ongoing work: looking into the use of fragmentation methods for regional embedding</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:.7em">
+Acknowledgements
+<hr>
+</div>
+<div style="font-family: Montserrat;font-size:.6em">
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Dr.&nbsp;Kenneth D. Jordan</li>
+<li>Dr.&nbsp;Daniel S. Lambrecht</li>
+<li>Co-authors: Shiv Upadhyay, Dr.&nbsp;James Shee, Dr.&nbsp;Hyeondeok Shin, Dr.&nbsp;Leonardo Bernasconi, Dr.&nbsp;Anouar Benali</li>
+<li>Dr.&nbsp;Luke Shulenburger, Dr.&nbsp;Raymond Clay</li>
+</ul>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:45%;">
+<p>Computational Resources</p>
+<ul>
+<li>Center for Research computing, University of Pittsburgh</li>
+<li>Argonne Leadership Computing Facility</li>
+<li>Sandia National Laboratories</li>
+</ul>
+</div>
+</div>
+<p>Funding:</p>
+<ul>
+<li>ACS: DNI-63213</li>
+<li>NSF: 1807638</li>
+</ul>
+<p><img src="images/SNL_Stacked_Black_Blue.png" style="float:left;height:3em;padding:.3em">  <img src="images/University_of_Pittsburgh_seal.png" style="float:left;height:3em;padding:.3em">  <img src="images/New_DOE_Logo_Color.png" style="float:left;height:3em;padding:.3em">  <img src="images/Argonne_cmyk_black-0.png" style="float:left;height:3em;padding:.3em">  <img src="images/acs_logo.png" style="float:left;height:3em;padding:.3em"> </p>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:.7em">
+Acknowledgements
+<hr>
+</div>
+<ul>
+<li>my family</li>
+<li>friends</li>
+<li>dr. madura <img data-src="images/jeff1_1.png"> <img data-src="images/jeff1_1.png"></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:1.0em; padding-bottom:.3em">
+Reliable approximations for electronic structure
+<hr>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div data-id="box2" style="background:  #caeac7; width: 98%; height: 250px; border-radius: 200px;text-align:center;color: #000000;font-size:.8em;padding-top:.5em">
+<p><a href="#integrals"><strong>Stochastic sampling</strong></a></p>
+<div class="{.style=&quot;font-size:.6em&quot;}">
+<p>Quantum Monte Carlo:<br> applications and developments<br></p>
+</div>
+<p><span class="math inline">\(\hookrightarrow\)</span> QMC can act as reference in system where DFT varies</p>
+</div>
+<div data-id="box2" style="background:  #caeac7; width: 98%; height: 250px; border-radius: 200px;text-align:center;color: #000000;font-size:.8em;padding-top:.5em;margin-top:5%">
+<p><a href="#hilbert_space"><strong>Hilbert space sampling</strong></a></p>
+<p>selected CI for<br> QMC trial wave functions<br> <span class="math inline">\(\hookrightarrow\)</span> sampling the Hilbert space can provide trial wave functions</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div data-id="box2" style="background:  #caeac7; width: 99%; height: 250px; border-radius: 100px;text-align:center;color: #000000;font-size:.8em;margin-top:25%;padding-top:.5em">
+<p><a href="#real_space"><strong>Real space partitioning</strong></a></p>
+<p>molecular fragments<br> determined with unsupervised machine learning<br> <span class="math inline">\(\hookrightarrow\)</span> spectral clustering is a robust approach which can work with structure any descriptor</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="font-family: Montserrat;font-size:.9em">
+<p>Conclusions</p>
+</div>
+<div style="font-family: Montserrat;font-size:.7em">
+<p>When electron correlation plays a major role, mean field methods may be problematic and alternatives are needed <br><br> <br> Presented on three approaches:</p>
+<ul>
+<li>QMC: application to (H<span class="math inline">\(_2\)</span>O)<span class="math inline">\(_4\)</span> and H on graphene <br> <span class="math inline">\(\hookrightarrow\)</span> systems where DFT varies, QMC can act as reference <br> <span class="math inline">\(\hookrightarrow\)</span> sampling the hilbert space can provide trial wave functions <br> <span class="math inline">\(\hookrightarrow\)</span> motivation for follow up studies</li>
+<li>UML Molecular Fragmentation: An approach to automatically partition molecular systems <br> <span class="math inline">\(\hookrightarrow\)</span> spectral clustering is a robust approach which can work with structure only descriptors.</li>
+</ul>
+</div>
+</section>
+<section class="slide level2 smaller scrollable" id="references">
+
+<p>References</p>
+<div class="footer footer-default">
+
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-doi:10.1063/5.0085982" class="csl-entry" role="doc-biblioentry">
+Amanda Dumi, Shiv Upadhyay, Leonardo Bernasconi, Hyeondeok Shin, Anouar Benali, &amp; Kenneth D. Jordan, <span>“The Binding of Atomic Hydrogen on Graphene from Density Functional Theory and Diffusion Monte Carlo Calculations,”</span> <em>The Journal of Chemical Physics</em>, 156.14 (2022), 144702DOI:<a href="https://doi.org/10.1063/5.0085982">10.1063/5.0085982</a>
+</div>
+<div id="ref-doi:10.1063/5.0030942" class="csl-entry" role="doc-biblioentry">
+Shiv Upadhyay, Amanda Dumi, James Shee, &amp; Kenneth D. Jordan, <span>“The Role of High-Order Electron Correlation Effects in a Model System for Non-Valence Correlation-Bound Anions,”</span> <em>The Journal of Chemical Physics</em>, 153.22 (2020), 224118DOI:<a href="https://doi.org/10.1063/5.0030942">10.1063/5.0030942</a>
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="slide_base_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="slide_base_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="slide_base_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="slide_base_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="slide_base_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="slide_base_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="slide_base_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="slide_base_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="slide_base_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="slide_base_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': true,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'h.v',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: true,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

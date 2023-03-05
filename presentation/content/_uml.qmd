@@ -1,0 +1,185 @@
+::: {id="real_space" style="font-family: Montserrat;font-size:1.0em"}
+Fragmenting with unsupervised machine learning
+:::
+
+::: {style="font-family: Montserrat;font-size:.7em"}
+Problem
+:::
+
+<!-- ![](images/fragment_demo.png){width=100% } -->
+![](images/large_polymer_example.png)){width=70% }
+
+
+--- 
+
+
+::: {id="real_space" style="font-family: Montserrat;font-size:1.0em"}
+Other fragment determination methods
+:::
+
+::: {id="real_space" style="font-family: Montserrat;font-size:.8em"}
+
+::: {.panel-tabset}
+
+## Treatment:
+- many body expansions: $E = \sum_I E_I + \sum_I\sum_{J>I} \Delta E_{IJ} + \sum_I\sum_{J>I}\sum_{K>J} \Delta E_{IJK} + \dots$
+
+- multilayer approaches (ONIOM, QM/MM)
+- Quantum Computing Applications
+- Localized active space methods
+
+
+##  Selection:
+
+- Energy convergence
+    - Systematic Molecular Fragmentation with Annihilation
+- Density convergence
+- user defined
+:::
+:::
+
+---
+
+
+
+::: {id="real_space" style="font-family: Montserrat;font-size:1.0em"}
+Fragmenting with unsupervised machine learning
+:::
+
+::: {style="font-family: Montserrat;font-size:.7em"}
+::: {.r-stack}
+
+![](images/methods.png){.fragment width=100% .fade-in-then-out fragment-index=0}
+
+![](images/descriptors.png){.fragment width=100% fragment-index=1.fade-in}
+
+:::
+:::
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:.9em"}
+Partitioning straightforward cases
+:::
+
+::: {style="font-family: Montserrat;font-size:.6em"}
+adjusted Rand index =1 -> expected fragmentation
+
+:::: {.columns}
+::: {.column width="50%"}
+
+- Wales water cluster database
+![](images/water4.png){height=7em}
+
+![](images/wc_tip4p_box_randidx_aps.png){width=80% }
+
+
+:::
+
+::: {.column width="50%"}
+
+- methylthiophene tetramers
+![](images/mt_monomer.png){height=7em}
+
+![](images/mt_wb97x-d_violin_randidx.png){width=80% fig-align="left"}
+
+:::
+::::
+
+Summary:
+
+:::
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:.9em"}
+Additional insights from water clusters
+:::
+::: {style="font-family: Montserrat;font-size:.9em;text-align:center"}
+
+![](images/descending_cn_simple.png){width=60%}
+![](images/variance_lesscluster.png){width=60%}
+:::
+
+---
+
+::: {style="font-family: Montserrat;font-size:.9em"}
+A more ambiguous case: silyl ketene
+</hr>
+:::
+::: {style="font-family: Montserrat;font-size:.7em;text-align:center"}
+![](images/base.png){width=30%}
+![](images/trimer_render.png){width=30%}
+:::
+
+::: {style="font-family: Montserrat;font-size:.6em"}
+Questions:
+
+1. Investigate error vs speed up 
+2. What factors impact descriptor? (level of theory, basis set)
+:::
+
+::: {style="font-family: Montserrat;font-size:.5em"}
+Computational details:
+
+- vacuum embedding: $E_{\text{tot}}= \sum\limits_{i=1}^{N_{frag}} E_i$
+- $E_{\text{frag}}$ = Fragments with hydrogen caps - H only values
+- three fragments requested
+:::
+
+
+---
+
+
+::: {style="font-family: Montserrat;font-size:.8em"}
+A more ambiguous case: silyl ketene
+</hr>
+:::
+
+::: {style="font-family: Montserrat;font-size:.7em; text-align:center"}
+:::: {.columns}
+::: {.column width="60%"}
+![](images/er_su_trimers_desc_alg.png){width=70% }
+:::
+::: {.column width="40%"}
+![](images/trimer_a_nrmbm.png){width=70% }
+![](images/trimer_s_nrmbm.png){width=70% }
+:::
+::::
+- spectral: lowest error/highest speed-up
+- structure only descriptors are still performing well!!
+- rounding has no benefit in small dataset
+- spectral not impacted by basis set/level of theory for descriptor
+
+
+:::
+
+:::
+
+
+---
+
+::: {style="font-family: Montserrat;font-size:.8em"}
+Future Directions</hr>
+:::
+::: {style="font-family: Montserrat;font-size:.8em"}
+Conclusions:
+- UML Molecular Fragmentation: An approach to automatically partition molecular systems
+<br>
+$\hookrightarrow$  spectral clustering is the most robust approach
+ 
+$\hookrightarrow$ with systems to this point, can work with structure only descriptors offering a potential low cost way to even fragment determination
+
+Future Directions:
+
+- short term: large polymer study.
+- 2-body density matrix as descriptor
+- ongoing work: looking into the use of fragmentation methods for regional embedding (Shiv Upadhyay and Dr. Lambrecht)
+:::
+---
+
+
